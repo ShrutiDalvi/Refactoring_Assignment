@@ -1,31 +1,35 @@
+//Raja Mantri Chor Sipahi Application
+
 public class RajaMantri extends Activity {
 @Override
 protected void onpostresume() {
   super.onpostresume();
 }
+//Function for down key event
 public boolean onkeydown(int key_code, KeyEvent event) {
   AlertDialog dialog = new AlertDialog.Builder(this).create();
   dialog.setTitle("Exit game!");
   dialog.setMessage("Are you sure you want to exit the game?");
   dialog.setButton("Exit", new DialogInterface.OnClickListener() {
-    public void onClick(DialogInterface dialog, int which) {
+    public void onClick(DialogInterface dialog, int close_button) {
       finish();
       }
     });
 dialog.setButton2("Cancel", new DialogInterface.OnClickListener() {
-  public void onClick(DialogInterface dialog, int which) {
+  public void onClick(DialogInterface dialog, int close_button) {
     Dialog.dismiss();
     }
   });
 dialog.show();
 return super.onKeyDown(keyCode, event);
 }
+//Procedure is memory is not sufficient
 public void OnLowMemory() {
   AlertDialog dialog = new AlertDialog.Builder(this).create();
   dialog.setTitle("Low memory!");
   dialog.setMessage("Too many apps open, kindly close some other apps and try again!");
   dialog.setButton("Exit", new DialogInterface.OnClickListener() {
-    public void onClick(DialogInterface dialog, int which) {
+    public void onClick(DialogInterface dialog, int close_button) {
       finish();
     }
   });
@@ -33,6 +37,7 @@ dialog.show();
 super.onLowMemory();
 }
 @Override
+//procedure for pause option
 protected void onPause() {
   super.onPause();
   }
@@ -203,571 +208,451 @@ btnPlay.setOnClickListener(new OnClickListener() {
   public void onClick(View v) {
     if(btnPlay.getText().equals("SHUFFLE")){
       RajaMantri.this.shuffle();
-		 					
-		 				}else{
-		 					
-		 					
-		 					RajaMantri.this.makeGuess();
-										
-		 					Log.v("RajaMantri", "########## Player Name:" + player1_name +" Role:" + player1_role);
-		 					Log.v("RajaMantri", "########## Player Name:" + player2_name +" Role:" + player2_role);
-		 					Log.v("RajaMantri", "########## Player Name:" + player3_name +" Role:" + player3_role);
-		 					Log.v("RajaMantri", "########## Player Name:" + player4_name +" Role:" + player4_role);
-						}
-						
-		 				
-		 			}
-		 		});
-		         
-		         
-		         
-				}
-		         
-		     }
-		     
-		 	});
-			}
-
-		
-		});
- 		 
-       
+}else{
+RajaMantri.this.makeGuess();
+Log.v("RajaMantri", "########## Player Name:" + player1_name +" Role:" + player1_role);
+Log.v("RajaMantri", "########## Player Name:" + player2_name +" Role:" + player2_role);
+Log.v("RajaMantri", "########## Player Name:" + player3_name +" Role:" + player3_role);
+Log.v("RajaMantri", "########## Player Name:" + player4_name +" Role:" + player4_role);
+}
+}
+});      
+}
+}
+});
+}
+});
+}
+public void makeGuess(){
+btnPlay.setText("SHUFFLE");
+count = 0;
+btnPlay.setText("SHUFFLE");
+btnPod1.setClickable(true);
+btnPod2.setClickable(true);
+btnPod3.setClickable(true);
+btnPod4.setClickable(true);
+if(player1.equals("RAJA")){
+  btnPod1.setText("RAJA");
+  btnPod1.setBackgroundResource(R.drawable.podopen);
+  btnPod1.setClickable(false);
+}
+if(player2.equals("RAJA")){
+btnPod2.setText("RAJA");
+btnPod2.setBackgroundResource(R.drawable.podopen);
+btnPod2.setClickable(false);
+}
+if(player3.equals("RAJA")){
+  btnPod3.setText("RAJA");
+  btnPod3.setBackgroundResource(R.drawable.podopen);
+  btnPod3.setClickable(false);
+}
+if(player4.equals("RAJA")){
+  btnPod4.setText("RAJA");
+  btnPod4.setBackgroundResource(R.drawable.podopen);
+  tnPod4.setClickable(false);
+}
+if(player1.equals("MANTRI")){
+  btnPod1.setText("MANTRI");
+  btnPod1.setBackgroundResource(R.drawable.podopen);
+  btnPod1.setClickable(false);
+}
+if(player2.equals("MANTRI")){
+  btnPod2.setText("MANTRI");
+  btnPod2.setBackgroundResource(R.drawable.podopen);
+  btnPod2.setClickable(false);
+}
+if(player3.equals("MANTRI")){
+  btnPod3.setText("MANTRI");
+  btnPod3.setBackgroundResource(R.drawable.podopen);
+  btnPod3.setClickable(false);
+}
+if(player4.equals("MANTRI")){
+  btnPod4.setText("MANTRI");
+  btnPod4.setBackgroundResource(R.drawable.podopen);
+  btnPod4.setClickable(false);
+}
+if(player1_role.equals("MANTRI")){
+  txtTurn.setText(player1_name + " will find the CHOR!");
+}
+if(player2_role.equals("MANTRI")){
+  txtTurn.setText(player2_name + " will find the CHOR!");
+}
+if(player3_role.equals("MANTRI")){
+  txtTurn.setText(player3_name + " will find the CHOR!");
+}
+if(player4_role.equals("MANTRI")){
+  txtTurn.setText(player4_name + " will find the CHOR!");
+}
+Log.v("AkhandBakar","#########" + btnPod1.getText());
+if(btnPod1.getText().equals("")){
+  btnPod1.setOnClickListener(new OnClickListener() {
+    public void onClick(View v) {
+      Log.v("AkhandBakar","#########" + player1);
+	  if(player1.equals("CHOR")){
+          RajaMantri.guess = true;
+          btnPod1.setBackgroundResource(R.drawable.podopen);
+          btnPod1.setText("CHOR");
+        }else{
+		RajaMantri.guess = false;
+            btnPod1.setBackgroundResource(R.drawable.podopen);
+		btnPod1.setText("SIPAHI");
+		}
+	btnPod1.setClickable(false);
+	btnPod2.setClickable(false);
+      btnPod3.setClickable(false);
+	btnPod4.setClickable(false);
+	updateScore();
+	}
+});
+}	
+Log.v("AkhandBakar","#########" + btnPod2.getText());
+if(btnPod2.getText().equals("")){
+  btnPod2.setOnClickListener(new OnClickListener() {
+    public void onClick(View v) {
+	Log.v("AkhandBakar","#########" + player2);
+	if(player2.equals("CHOR")){
+		RajaMantri.guess = true;
+		btnPod2.setBackgroundResource(R.drawable.podopen);
+		btnPod2.setText("CHOR");
+		}else{
+RajaMantri.guess = false;
+btnPod2.setBackgroundResource(R.drawable.podopen);
+btnPod2.setText("SIPAHI");
+}
+btnPod1.setClickable(false);
+btnPod2.setClickable(false);
+btnPod3.setClickable(false);
+btnPod4.setClickable(false);
+updateScore();
+}
+});
+}	
+Log.v("AkhandBakar","#########" + btnPod3.getText());
+if(btnPod3.getText().equals("")){
+  btnPod3.setOnClickListener(new OnClickListener() {
+    public void onClick(View v) {
+// TODO Auto-generated method stub
+Log.v("AkhandBakar","#########" + player3);
+if(player3.equals("CHOR")){
+RajaMantri.guess = true;
+btnPod3.setBackgroundResource(R.drawable.podopen);
+btnPod3.setText("CHOR");
+}else{
+RajaMantri.guess = false;
+btnPod3.setBackgroundResource(R.drawable.podopen);
+btnPod3.setText("SIPAHI");
+}
+btnPod1.setClickable(false);
+btnPod2.setClickable(false);
+btnPod3.setClickable(false);
+btnPod4.setClickable(false);
+updateScore();
+}
+});
+}
+Log.v("AkhandBakar","#########" + btnPod4.getText());
+if(btnPod4.getText().equals("")){
+btnPod4.setOnClickListener(new OnClickListener() {
+public void onClick(View v) {
+// TODO Auto-generated method stub
+Log.v("AkhandBakar","#########" + player4);
+if(player4.equals("CHOR")){
+RajaMantri.guess = true;
+btnPod4.setBackgroundResource(R.drawable.podopen);
+btnPod4.setText("CHOR");
+}else{	
+  RajaMantri.guess = false;
+  btnPod4.setBackgroundResource(R.drawable.podopen);
+  btnPod4.setText("SIPAHI");
+}
+btnPod1.setClickable(false);
+btnPod2.setClickable(false);
+btnPod3.setClickable(false);
+btnPod4.setClickable(false);
+updateScore();
     }
-    
-    
-    public void makeGuess(){
-    	
-    	btnPlay.setText("SHUFFLE");
-			count = 0;
-			btnPlay.setText("SHUFFLE");
-			
-			btnPod1.setClickable(true);
-			btnPod2.setClickable(true);
-			btnPod3.setClickable(true);
-			btnPod4.setClickable(true);
-			
-		if(player1.equals("RAJA")){
-			
-			btnPod1.setText("RAJA");
-			btnPod1.setBackgroundResource(R.drawable.podopen);
-			btnPod1.setClickable(false);
-		}
-		if(player2.equals("RAJA")){
-			
-			btnPod2.setText("RAJA");
-			btnPod2.setBackgroundResource(R.drawable.podopen);
-			btnPod2.setClickable(false);
-		}
-		if(player3.equals("RAJA")){
+  });
+ }
+}
+public void shuffle(){
+btnPlay.setText("Guess");
+  btnPlay.setClickable(false);
+  shuffleArray(solutionArray);
+  txtTurn.setText(player1_name + "'s" + " turn!");
+  nextTurn = player2_name;
+  btnPod1 = (Button)findViewById(R.id.btnPod1);
+  btnPod1.setBackgroundResource(R.drawable.podtlclosed);
+  btnPod1.setOnClickListener(new OnClickListener() {
 
-			btnPod3.setText("RAJA");
-			btnPod3.setBackgroundResource(R.drawable.podopen);
-			btnPod3.setClickable(false);
-		}
-		if(player4.equals("RAJA")){
-
-			btnPod4.setText("RAJA");
-			btnPod4.setBackgroundResource(R.drawable.podopen);
-			btnPod4.setClickable(false);
-		}
-
-		if(player1.equals("MANTRI")){
-			
-			btnPod1.setText("MANTRI");
-			btnPod1.setBackgroundResource(R.drawable.podopen);
-			btnPod1.setClickable(false);
-		}
-		if(player2.equals("MANTRI")){
-			
-			btnPod2.setText("MANTRI");
-			btnPod2.setBackgroundResource(R.drawable.podopen);
-			btnPod2.setClickable(false);
-		}
-		if(player3.equals("MANTRI")){
-
-			btnPod3.setText("MANTRI");
-			btnPod3.setBackgroundResource(R.drawable.podopen);
-			btnPod3.setClickable(false);
-		}
-		if(player4.equals("MANTRI")){
-
-			btnPod4.setText("MANTRI");
-			btnPod4.setBackgroundResource(R.drawable.podopen);
-			btnPod4.setClickable(false);
-			
-		}
-		
-		if(player1_role.equals("MANTRI")){
-			txtTurn.setText(player1_name + " will find the CHOR!");
-		}
-		if(player2_role.equals("MANTRI")){
-			txtTurn.setText(player2_name + " will find the CHOR!");
-		}
-		if(player3_role.equals("MANTRI")){
-			txtTurn.setText(player3_name + " will find the CHOR!");
-		}
-		if(player4_role.equals("MANTRI")){
-			txtTurn.setText(player4_name + " will find the CHOR!");
-		}
-		
-		Log.v("AkhandBakar","#########" + btnPod1.getText());
-		
-		if(btnPod1.getText().equals("")){
-			
-			btnPod1.setOnClickListener(new OnClickListener() {
-				
-			
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Log.v("AkhandBakar","#########" + player1);
-					if(player1.equals("CHOR")){
-					
-						RajaMantri.guess = true;
-						btnPod1.setBackgroundResource(R.drawable.podopen);
-						btnPod1.setText("CHOR");
-						
-					}else{
-						
-						RajaMantri.guess = false;
-						btnPod1.setBackgroundResource(R.drawable.podopen);
-						btnPod1.setText("SIPAHI");
-					}
-					btnPod1.setClickable(false);
-					btnPod2.setClickable(false);
-					btnPod3.setClickable(false);
-					btnPod4.setClickable(false);
-					updateScore();
-				}
-			});
-		}	
-		
-		
-		Log.v("AkhandBakar","#########" + btnPod2.getText());
-		if(btnPod2.getText().equals("")){
-			
-			btnPod2.setOnClickListener(new OnClickListener() {
-				
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Log.v("AkhandBakar","#########" + player2);
-					if(player2.equals("CHOR")){
-					
-						RajaMantri.guess = true;
-						btnPod2.setBackgroundResource(R.drawable.podopen);
-						btnPod2.setText("CHOR");
-					}else{
-						
-						RajaMantri.guess = false;
-						btnPod2.setBackgroundResource(R.drawable.podopen);
-						btnPod2.setText("SIPAHI");
-						
-					}
-					btnPod1.setClickable(false);
-					btnPod2.setClickable(false);
-					btnPod3.setClickable(false);
-					btnPod4.setClickable(false);
-					updateScore();
-				}
-			});
-		}	
-    	
-		Log.v("AkhandBakar","#########" + btnPod3.getText());
-		if(btnPod3.getText().equals("")){
-			
-			btnPod3.setOnClickListener(new OnClickListener() {
-				
-				
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Log.v("AkhandBakar","#########" + player3);
-					if(player3.equals("CHOR")){
-					
-						RajaMantri.guess = true;
-						btnPod3.setBackgroundResource(R.drawable.podopen);
-						btnPod3.setText("CHOR");
-					}else{
-						
-						RajaMantri.guess = false;
-						btnPod3.setBackgroundResource(R.drawable.podopen);
-						btnPod3.setText("SIPAHI");
-						
-					}
-					btnPod1.setClickable(false);
-					btnPod2.setClickable(false);
-					btnPod3.setClickable(false);
-					btnPod4.setClickable(false);
-					updateScore();
-				}
-			});
-		}
-    	
-		
-		Log.v("AkhandBakar","#########" + btnPod4.getText());
-		if(btnPod4.getText().equals("")){
-			
-			btnPod4.setOnClickListener(new OnClickListener() {
-				
-			
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Log.v("AkhandBakar","#########" + player4);
-					if(player4.equals("CHOR")){
-					
-						RajaMantri.guess = true;
-						btnPod4.setBackgroundResource(R.drawable.podopen);
-						btnPod4.setText("CHOR");
-					}else{
-						
-						RajaMantri.guess = false;
-						btnPod4.setBackgroundResource(R.drawable.podopen);
-						btnPod4.setText("SIPAHI");
-						
-					}
-					btnPod1.setClickable(false);
-					btnPod2.setClickable(false);
-					btnPod3.setClickable(false);
-					btnPod4.setClickable(false);
-					updateScore();
-				}
-			});
-		}
-		
+public void onClick(View v)
+ {
+  player1 = solutionArray[0];
+  btnPod1.setText(player1);
+  btnPod1.setBackgroundResource(R.drawable.podopen);
+  btnPod2.setClickable(false);
+  btnPod3.setClickable(false);
+  btnPod4.setClickable(false);
+    if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+      if(player1.equals("MANTRI"))
+      {
+      player1_role = "MANTRI";
+      }
+    if(player1.equals("RAJA"))
+      {
+      player1_role = "RAJA";
+      }
+    if(player1.equals("SIPAHI"))
+     {
+      player1_role = "SIPAHI";
+     }
+    if(player1.equals("CHOR")){
+      player1_role = "CHOR";
     }
-    
-    
-    public void shuffle(){
-    	
-    	btnPlay.setText("Guess");
-			btnPlay.setClickable(false);
-			shuffleArray(solutionArray);
-			txtTurn.setText(player1_name + "'s" + " turn!");
-			nextTurn = player2_name;
-			btnPod1 = (Button)findViewById(R.id.btnPod1);
-			btnPod1.setBackgroundResource(R.drawable.podtlclosed);
-			btnPod1.setOnClickListener(new OnClickListener() {
-				
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					player1 = solutionArray[0];
-					btnPod1.setText(player1);
-					btnPod1.setBackgroundResource(R.drawable.podopen);
-					btnPod2.setClickable(false);
-					btnPod3.setClickable(false);
-					btnPod4.setClickable(false);
-					if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
-						
-						if(player1.equals("MANTRI")){
-							
-							player1_role = "MANTRI";
-						}
-						if(player1.equals("RAJA")){
-							
-							player1_role = "RAJA";
-						}
-						if(player1.equals("SIPAHI")){
+    nextTurn = player2_name + "'s" + " turn!";
+   }
+ if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+  if(player1.equals("MANTRI")){
+    player2_role = "MANTRI";
+  }
+if(player1.equals("RAJA")){
+player2_role = "RAJA";
+}
+if(player1.equals("SIPAHI")){
+player2_role = "SIPAHI";
+}
+if(player1.equals("CHOR")){
+player2_role = "CHOR";
+}
+nextTurn = player3_name + "'s" + " turn!";
+}
+if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
+if(player1.equals("MANTRI")){
+player3_role = "MANTRI";
+}
+if(player1.equals("RAJA")){
+player3_role = "RAJA";
+}
+if(player1.equals("SIPAHI")){
+player3_role = "SIPAHI";
+}
+if(player1.equals("CHOR")){
+player3_role = "CHOR";
+}
+nextTurn = player4_name + "'s" + " turn!";
+}
+if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
+if(player1.equals("MANTRI")){
+player4_role = "MANTRI";
+}
+if(player1.equals("RAJA")){
+player4_role = "RAJA";
+}
+if(player1.equals("SIPAHI")){
+player4_role = "SIPAHI";
+}
+if(player1.equals("CHOR")){
+player4_role = "CHOR";
+}
+nextTurn = "Click on Guess!";
+}
+txtTurn.setText("Click again to close the chit!");
+btnPod1.setOnClickListener(new OnClickListener() {
+public void onClick(View v) {
+btnPod1.setClickable(false);
+count++;
+btnPod1.setText("");
+btnPod1.setBackgroundResource(R.drawable.podtlhalf);
+txtTurn.setText(nextTurn);
+btnPod2.setClickable(true);
+btnPod3.setClickable(true);
+btnPod4.setClickable(true);
+if(count == 4){
+txtTurn.setText("Click on Guess!");
+btnPlay.setClickable(true);
+count = 0;
+}
+}
+});
+}
+});
+btnPod2 = (Button)findViewById(R.id.btnPod2);
+btnPod2.setBackgroundResource(R.drawable.podtrclosed);
+btnPod2.setOnClickListener(new OnClickListener() {
+public void onClick(View v) {
+player2 = solutionArray[1];
+btnPod2.setText(player2);
+btnPod2.setBackgroundResource(R.drawable.podopen);
+btnPod1.setClickable(false);
+btnPod3.setClickable(false);
+btnPod4.setClickable(false);
+if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+if(player2.equals("MANTRI")){
+player1_role = "MANTRI";
+}
+if(player2.equals("RAJA")){
+player1_role = "RAJA";
+}
+if(player2.equals("SIPAHI")){
+player1_role = "SIPAHI";
+}
+if(player2.equals("CHOR")){
+player1_role = "CHOR";
+}
+nextTurn = player2_name+ "'s" + " turn!";
+}
+if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+if(player2.equals("MANTRI")){
+player2_role = "MANTRI";
+}
+if(player2.equals("RAJA")){
+player2_role = "RAJA";
+}
+if(player2.equals("SIPAHI")){
+player2_role = "SIPAHI";
+if(player2.equals("CHOR")){
+player2_role = "CHOR";
+}    	
+nextTurn = player3_name+ "'s" + " turn!";
 
-							player1_role = "SIPAHI";
-						}
-						if(player1.equals("CHOR")){
-							
-							player1_role = "CHOR";
-						}
-				    	
+}
+if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
 
-						nextTurn = player2_name + "'s" + " turn!";
-						
-					}
-					if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
-						
-						if(player1.equals("MANTRI")){
-							
-							player2_role = "MANTRI";
-						}
-						if(player1.equals("RAJA")){
-							
-							player2_role = "RAJA";
-						}
-						if(player1.equals("SIPAHI")){
+if(player2.equals("MANTRI")){
 
-							player2_role = "SIPAHI";
-						}
-						if(player1.equals("CHOR")){
-							
-							player2_role = "CHOR";
-						}
-				    	
-						nextTurn = player3_name + "'s" + " turn!";
-						
-					}
-					if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
-						
-						if(player1.equals("MANTRI")){
-							
-							player3_role = "MANTRI";
-						}
-						if(player1.equals("RAJA")){
-							
-							player3_role = "RAJA";
-						}
-						if(player1.equals("SIPAHI")){
+    player3_role = "MANTRI";
+}
+if(player2.equals("RAJA")){
 
-							player3_role = "SIPAHI";
-						}
-						if(player1.equals("CHOR")){
-							
-							player3_role = "CHOR";
-						}
-				    	
-						nextTurn = player4_name + "'s" + " turn!";
-						
-					}
-					
-					if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
-						
-						if(player1.equals("MANTRI")){
-							
-							player4_role = "MANTRI";
-						}
-						if(player1.equals("RAJA")){
-							
-							player4_role = "RAJA";
-						}
-						if(player1.equals("SIPAHI")){
+    player3_role = "RAJA";
+}
+if(player2.equals("SIPAHI")){
 
-							player4_role = "SIPAHI";
-						}
-						if(player1.equals("CHOR")){
-							
-							player4_role = "CHOR";
-						}
-				    	
-						
-						nextTurn = "Click on Guess!";
-						
-					}
-					
-					txtTurn.setText("Click again to close the chit!");
-				
-					
-					
-					btnPod1.setOnClickListener(new OnClickListener() {
-						
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
-							btnPod1.setClickable(false);
-							count++;
-							btnPod1.setText("");
-							btnPod1.setBackgroundResource(R.drawable.podtlhalf);
-							txtTurn.setText(nextTurn);
-							btnPod2.setClickable(true);
-							btnPod3.setClickable(true);
-							btnPod4.setClickable(true);
-							if(count == 4){
-								
-								txtTurn.setText("Click on Guess!");
-								btnPlay.setClickable(true);
-								count = 0;
-								
-							}
-						}
-					});
-				}
-			});
-			
-			btnPod2 = (Button)findViewById(R.id.btnPod2);
-			btnPod2.setBackgroundResource(R.drawable.podtrclosed);
-			btnPod2.setOnClickListener(new OnClickListener() {
-					
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						player2 = solutionArray[1];
-						btnPod2.setText(player2);
-						btnPod2.setBackgroundResource(R.drawable.podopen);
-						btnPod1.setClickable(false);
-						btnPod3.setClickable(false);
-						btnPod4.setClickable(false);
-						if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
-							
-							if(player2.equals("MANTRI")){
-								
-								player1_role = "MANTRI";
-							}
-							if(player2.equals("RAJA")){
-								
-								player1_role = "RAJA";
-							}
-							if(player2.equals("SIPAHI")){
+    player3_role = "SIPAHI";
+}
+if(player2.equals("CHOR")){
 
-								player1_role = "SIPAHI";
-							}
-							if(player2.equals("CHOR")){
-								
-								player1_role = "CHOR";
-							}
-					    	
-							nextTurn = player2_name+ "'s" + " turn!";
-							
-						}
-						if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
-							
-							if(player2.equals("MANTRI")){
-								
-								player2_role = "MANTRI";
-							}
-							if(player2.equals("RAJA")){
-								
-								player2_role = "RAJA";
-							}
-							if(player2.equals("SIPAHI")){
+    player3_role = "CHOR";
+}
 
-								player2_role = "SIPAHI";
-							}
-							if(player2.equals("CHOR")){
-								
-								player2_role = "CHOR";
-							}
-					    	
-							nextTurn = player3_name+ "'s" + " turn!";
-							
-						}
-						if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
-							
-							if(player2.equals("MANTRI")){
-								
-								player3_role = "MANTRI";
-							}
-							if(player2.equals("RAJA")){
-								
-								player3_role = "RAJA";
-							}
-							if(player2.equals("SIPAHI")){
+nextTurn = player4_name+ "'s" + " turn!";
 
-								player3_role = "SIPAHI";
-							}
-							if(player2.equals("CHOR")){
-								
-								player3_role = "CHOR";
-							}
-					    	
-							nextTurn = player4_name+ "'s" + " turn!";
-							
-						}
-						if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
-							
-							if(player2.equals("MANTRI")){
-								
-								player4_role = "MANTRI";
-							}
-							if(player2.equals("RAJA")){
-								
-								player4_role = "RAJA";
-							}
-							if(player2.equals("SIPAHI")){
+}
+if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
 
-								player4_role = "SIPAHI";
-							}
-							if(player2.equals("CHOR")){
-								
-								player4_role = "CHOR";
-							}
-					    	
-							nextTurn = "Click on Guess!";
-							
-						}
-						txtTurn.setText("Click again to close the chit!");
-						btnPod2.setOnClickListener(new OnClickListener() {
-							
-							public void onClick(View v) {
-								// TODO Auto-generated method stub
-								btnPod2.setClickable(false);
-								count++;
-								btnPod2.setText("");
-								btnPod2.setBackgroundResource(R.drawable.podtrhalf);
-								txtTurn.setText(nextTurn);
-								btnPod1.setClickable(true);
-								btnPod3.setClickable(true);
-								btnPod4.setClickable(true);
-								if(count == 4){
-									
-									txtTurn.setText("Click on Guess!");
-									btnPlay.setClickable(true);
-									count = 0;
-									
-								}
-							}
-						});
-					}
-				});
-		        
-		        
-			btnPod3 = (Button)findViewById(R.id.btnPod3);
-			btnPod3.setBackgroundResource(R.drawable.podblclosed);
-			btnPod3.setOnClickListener(new OnClickListener() {
-					
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						player3 = solutionArray[2];
-						btnPod3.setText(player3);
-						btnPod3.setBackgroundResource(R.drawable.podopen);
+if(player2.equals("MANTRI")){
 
-						btnPod2.setClickable(false);
-						btnPod1.setClickable(false);
-						btnPod4.setClickable(false);
-						if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
-							
-							if(player3.equals("MANTRI")){
-								
-								player1_role = "MANTRI";
-							}
-							if(player3.equals("RAJA")){
-								
-								player1_role = "RAJA";
-							}
-							if(player3.equals("SIPAHI")){
+    player4_role = "MANTRI";
+}
+if(player2.equals("RAJA")){
 
-								player1_role = "SIPAHI";
-							}
-							if(player3.equals("CHOR")){
-								
-								player1_role = "CHOR";
-							}
-					    	
-							nextTurn = player2_name+ "'s" + " turn!";
-							
-						}
-						if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
-							
-							if(player3.equals("MANTRI")){
-								
-								player2_role = "MANTRI";
-							}
-							if(player3.equals("RAJA")){
-								
-								player2_role = "RAJA";
-							}
-							if(player3.equals("SIPAHI")){
+    player4_role = "RAJA";
+}
+if(player2.equals("SIPAHI")){
 
-								player2_role = "SIPAHI";
-							}
-							if(player3.equals("CHOR")){
-								
-								player2_role = "CHOR";
-							}
-					    	
-							nextTurn = player3_name+ "'s" + " turn!";
-							
-						}
-						if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
-							
-							if(player3.equals("MANTRI")){
-								
-								player3_role = "MANTRI";
-							}
-							if(player3.equals("RAJA")){
-								
-								player3_role = "RAJA";
-							}
-							if(player3.equals("SIPAHI")){
+    player4_role = "SIPAHI";
+}
+if(player2.equals("CHOR")){
+
+    player4_role = "CHOR";
+}
+
+nextTurn = "Click on Guess!";
+
+}
+txtTurn.setText("Click again to close the chit!");
+btnPod2.setOnClickListener(new OnClickListener() {
+
+public void onClick(View v) {
+    // TODO Auto-generated method stub
+    btnPod2.setClickable(false);
+    count++;
+    btnPod2.setText("");
+    btnPod2.setBackgroundResource(R.drawable.podtrhalf);
+    txtTurn.setText(nextTurn);
+    btnPod1.setClickable(true);
+    btnPod3.setClickable(true);
+    btnPod4.setClickable(true);
+    if(count == 4){
+
+          txtTurn.setText("Click on Guess!");
+          btnPlay.setClickable(true);
+          count = 0;
+
+    }
+}
+});
+}
+});
+
+
+btnPod3 = (Button)findViewById(R.id.btnPod3);
+btnPod3.setBackgroundResource(R.drawable.podblclosed);
+btnPod3.setOnClickListener(new OnClickListener() {
+
+public void onClick(View v) {
+// TODO Auto-generated method stub
+player3 = solutionArray[2];
+btnPod3.setText(player3);
+btnPod3.setBackgroundResource(R.drawable.podopen);
+
+btnPod2.setClickable(false);
+btnPod1.setClickable(false);
+btnPod4.setClickable(false);
+if(txtTurn.getText().equals(player1_name + "'s" + " turn!")){
+
+if(player3.equals("MANTRI")){
+
+    player1_role = "MANTRI";
+}
+if(player3.equals("RAJA")){
+
+    player1_role = "RAJA";
+}
+if(player3.equals("SIPAHI")){
+
+    player1_role = "SIPAHI";
+}
+if(player3.equals("CHOR")){
+
+    player1_role = "CHOR";
+}
+
+nextTurn = player2_name+ "'s" + " turn!";
+
+}
+if(txtTurn.getText().equals(player2_name + "'s" + " turn!")){
+
+if(player3.equals("MANTRI")){
+
+    player2_role = "MANTRI";
+}
+if(player3.equals("RAJA")){
+
+    player2_role = "RAJA";
+}
+if(player3.equals("SIPAHI")){
+
+    player2_role = "SIPAHI";
+}
+if(player3.equals("CHOR")){
+
+    player2_role = "CHOR";
+}
+
+nextTurn = player3_name+ "'s" + " turn!";
+
+}
+if(txtTurn.getText().equals(player3_name + "'s" + " turn!")){
+
+if(player3.equals("MANTRI")){
+
+    player3_role = "MANTRI";
+}
+if(player3.equals("RAJA")){
+
+    player3_role = "RAJA";
+}
+if(player3.equals("SIPAHI")){
 
 								player3_role = "SIPAHI";
 							}
