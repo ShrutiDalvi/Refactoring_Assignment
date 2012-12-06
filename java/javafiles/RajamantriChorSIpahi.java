@@ -1,10 +1,10 @@
 //Raja Mantri Chor Sipahi Application
-
 public class RajaMantri extends Activity {
-@Override
 protected void onpostresume() {
   super.onpostresume();
 }
+}
+
 //Function for down key event
 public boolean onkeydown(int key_code, KeyEvent event) {
   AlertDialog dialog = new AlertDialog.Builder(this).create();
@@ -15,14 +15,15 @@ public boolean onkeydown(int key_code, KeyEvent event) {
       finish();
       }
     });
-dialog.setButton2("Cancel", new DialogInterface.OnClickListener() {
+  dialog.setButton2("Cancel", new DialogInterface.OnClickListener() {
   public void onClick(DialogInterface dialog, int close_button) {
     Dialog.dismiss();
     }
   });
-dialog.show();
-return super.onKeyDown(keyCode, event);
+  dialog.show();
+  return super.onKeyDown(keyCode, event);
 }
+
 //Procedure is memory is not sufficient
 public void OnLowMemory() {
   AlertDialog dialog = new AlertDialog.Builder(this).create();
@@ -32,15 +33,18 @@ public void OnLowMemory() {
     public void onClick(DialogInterface dialog, int close_button) {
       finish();
     }
-  });
-dialog.show();
-super.onLowMemory();
+   });
+  dialog.show();
+  super.onLowMemory();
 }
-@Override
+
+
 //procedure for pause option
 protected void onPause() {
   super.onPause();
   }
+
+//Declaration of variables
 String[] solution_array = { "RAJA", "MANTRI", "CHOR", "SIPAHI"};
 String[] players_array = {"Player1", "Player2", "Player3", "Player4"};
 static String player1_name = "" ;
@@ -94,13 +98,15 @@ static TextView txtPlayer4;
 Bundle savedInstanceState2;
 Button btnMainMenu;
 String next_turn = "";	
+
 Public void onRestart(){
   super.onRestart();
 }
+
 public void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.welcome);
-  i =j=k=l=0;
+  i=j=k=l=0;
   btnHelp = (Button)findViewById(R.id.btnHelp);
   btnHelp.setOnClickListener(new OnClickListener() {
     public void onClick(View v) {
@@ -108,7 +114,6 @@ public void onCreate(Bundle savedInstanceState) {
 	// Create the adView
 	AdView adView = new AdView(RajaMantri.this, AdSize.BANNER, "a14e156523d01de");
 	// Lookup your LinearLayout assuming it’s been given
-	// the attribute android:id="@+id/mainLayout"
 	LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayoutHelp);
 	// Add the adView to it
 	layout.addView(adView);
@@ -128,9 +133,10 @@ public void onCreate(Bundle savedInstanceState) {
     }
 });
 btnRajaMantri = (Button) findViewById(R.id.btnRajaMantri);
+
+//Events of the game
 bnRajaMantri.setOnClickListener(new OnClickListener() {
 public void onClick(View v) {
-// TODO Auto-generated method stub
 setContentView(R.layout.rmcsp);	
 // Create the adView
 AdView adView = new AdView(RajaMantri.this, AdSize.BANNER, "a14e156523d01de");
