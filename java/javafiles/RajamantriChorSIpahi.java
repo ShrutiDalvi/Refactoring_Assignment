@@ -340,30 +340,28 @@ Log.v("AkhandBakar","#########" + btnPod3.getText());
 if(btnPod3.getText().equals("")){
   btnPod3.setOnClickListener(new OnClickListener() {
     public void onClick(View v) {
-// TODO Auto-generated method stub
 Log.v("AkhandBakar","#########" + player3);
 if(player3.equals("CHOR")){
-RajaMantri.guess = true;
-btnPod3.setBackgroundResource(R.drawable.podopen);
-btnPod3.setText("CHOR");
-}else{
-RajaMantri.guess = false;
-btnPod3.setBackgroundResource(R.drawable.podopen);
-btnPod3.setText("SIPAHI");
+  RajaMantri.guess = true;
+  btnPod3.setBackgroundResource(R.drawable.podopen);
+  btnPod3.setText("CHOR");
+ }else{
+  RajaMantri.guess = false;
+  btnPod3.setBackgroundResource(R.drawable.podopen);
+  btnPod3.setText("SIPAHI");
 }
-btnPod1.setClickable(false);
-btnPod2.setClickable(false);
-btnPod3.setClickable(false);
-btnPod4.setClickable(false);
-updateScore();
-}
+  btnPod1.setClickable(false);
+  btnPod2.setClickable(false);
+  btnPod3.setClickable(false);
+  btnPod4.setClickable(false);
+  updateScore();
+ }
 });
 }
 Log.v("AkhandBakar","#########" + btnPod4.getText());
 if(btnPod4.getText().equals("")){
 btnPod4.setOnClickListener(new OnClickListener() {
 public void onClick(View v) {
-// TODO Auto-generated method stub
 Log.v("AkhandBakar","#########" + player4);
 if(player4.equals("CHOR")){
 RajaMantri.guess = true;
