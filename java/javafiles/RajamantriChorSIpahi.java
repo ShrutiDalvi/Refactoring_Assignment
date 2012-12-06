@@ -167,6 +167,7 @@ Log.v("AkandBakar", "Playernames:" + player2_name);
 Log.v("AkandBakar", "Playernames:" + player3_name);
 Log.v("AkandBakar", "Playernames:" + player4_name);
 btnMainMenu = (Button) findViewById(R.id.btnMainMenu);
+
 btnMainMenu.setOnClickListener(new OnClickListener() {
   public void onClick(View v) {
     Intent i = new Intent(RajaMantri.this, RajaMantri.class);
@@ -174,6 +175,7 @@ btnMainMenu.setOnClickListener(new OnClickListener() {
     finish();
   }
 });
+
 btnSignin = (Button) findViewById(R.id.btnsignin);
 btnSignin.setOnClickListener(new OnClickListener() {
   public void onClick(View v) {
@@ -185,59 +187,60 @@ btnSignin.setOnClickListener(new OnClickListener() {
     Toast toast = Toast.makeText(getBaseContext(), "Enter player names!", 8000);
 					toast.show();
 } else{
-setContentView(R.layout.rmcsgnew);	
-// Create the adView
-AdView adView = new AdView(RajaMantri.this, AdSize.BANNER, "a14e156523d01de");
-// Lookup your LinearLayout assuming it’s been given
-// the attribute android:id="@+id/mainLayout"
-LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
-// Add the adView to it
-layout.addView(adView);
-// Initiate a generic request to load it with an ad
-adView.loadAd(new AdRequest());
-txtTurn = (TextView)findViewById(R.id.txtTurn);
-txtTurn.setText("Click on SHUFFLE!");
-playersArray[0] = player1_name;
-playersArray[1] = player2_name;
-playersArray[2] = player3_name;
-playersArray[3] = player4_name;
-txtPlayer1 = (TextView) findViewById(R.id.txtPlayer1);
-txtPlayer1.setText("1."+player1_name + " [" + p1score + "]");					
-txtPlayer2 = (TextView) findViewById(R.id.txtPlayer2);
-txtPlayer2.setText("2."+player2_name+ " [" + p2score + "]");
-txtPlayer3 = (TextView) findViewById(R.id.txtPlayer3);
-txtPlayer3.setText("3."+player3_name+ " [" + p3score + "]");
-txtPlayer4 = (TextView) findViewById(R.id.txtPlayer4);
-txtPlayer4.setText("4."+player4_name+ " [" + p4score + "]");
-btnPlay = (Button) findViewById(R.id.btnPlay);
-btnPlay.setOnClickListener(new OnClickListener() {
-  public void onClick(View v) {
+  setContentView(R.layout.rmcsgnew);
+  // Create the adView
+  AdView adView = new AdView(RajaMantri.this, AdSize.BANNER, "a14e156523d01de");
+  // Lookup your LinearLayout assuming it’s been given
+  // the attribute android:id="@+id/mainLayout"
+  LinearLayout layout = (LinearLayout)findViewById(R.id.mainLayout);
+  // Add the adView to it
+  layout.addView(adView);
+  // Initiate a generic request to load it with an ad
+  adView.loadAd(new AdRequest());
+  txtTurn = (TextView)findViewById(R.id.txtTurn);
+  txtTurn.setText("Click on SHUFFLE!");
+  playersArray[0] = player1_name;
+  playersArray[1] = player2_name;
+  playersArray[2] = player3_name;
+  playersArray[3] = player4_name;
+  txtPlayer1 = (TextView) findViewById(R.id.txtPlayer1);
+  txtPlayer1.setText("1."+player1_name + " [" + p1score + "]");
+  txtPlayer2 = (TextView) findViewById(R.id.txtPlayer2);
+  txtPlayer2.setText("2."+player2_name+ " [" + p2score + "]");
+  txtPlayer3 = (TextView) findViewById(R.id.txtPlayer3);
+  txtPlayer3.setText("3."+player3_name+ " [" + p3score + "]");
+  txtPlayer4 = (TextView) findViewById(R.id.txtPlayer4);
+  txtPlayer4.setText("4."+player4_name+ " [" + p4score + "]");
+  btnPlay = (Button) findViewById(R.id.btnPlay);
+
+  btnPlay.setOnClickListener(new OnClickListener() {
+    public void onClick(View v) {
     if(btnPlay.getText().equals("SHUFFLE")){
       RajaMantri.this.shuffle();
-}else{
+ }else{
 RajaMantri.this.makeGuess();
 Log.v("RajaMantri", "########## Player Name:" + player1_name +" Role:" + player1_role);
 Log.v("RajaMantri", "########## Player Name:" + player2_name +" Role:" + player2_role);
 Log.v("RajaMantri", "########## Player Name:" + player3_name +" Role:" + player3_role);
 Log.v("RajaMantri", "########## Player Name:" + player4_name +" Role:" + player4_role);
-}
-}
-});      
-}
-}
+    }
+   }
+  });
+ }
+ }
+ });
+ }
 });
-}
-});
-}
+ }
 public void makeGuess(){
-btnPlay.setText("SHUFFLE");
-count = 0;
-btnPlay.setText("SHUFFLE");
-btnPod1.setClickable(true);
-btnPod2.setClickable(true);
-btnPod3.setClickable(true);
-btnPod4.setClickable(true);
-if(player1.equals("RAJA")){
+  btnPlay.setText("SHUFFLE");
+  count = 0;
+  btnPlay.setText("SHUFFLE");
+  btnPod1.setClickable(true);
+  btnPod2.setClickable(true);
+  btnPod3.setClickable(true);
+  btnPod4.setClickable(true);
+  if(player1.equals("RAJA")){
   btnPod1.setText("RAJA");
   btnPod1.setBackgroundResource(R.drawable.podopen);
   btnPod1.setClickable(false);
