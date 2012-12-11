@@ -661,17 +661,11 @@ if(player3.equals("RAJA")){
 }
 if(player3.equals("SIPAHI")){
 
-								player3_role = "SIPAHI";
-							}
-							if(player3.equals("CHOR")){
-								
-								player3_role = "CHOR";
-							}
-							nextTurn = player4_name+ "'s" + " turn!";
-							
-						}
-						if(txtTurn.getText().equals(player4_name + "'s" + " turn!")){
-							
+player3_role = "SIPAHI";
+}
+if(player3.equals("CHOR")){
+player3_role = "CHOR";
+}
 							if(player3.equals("MANTRI")){
 								
 								player4_role = "MANTRI";
